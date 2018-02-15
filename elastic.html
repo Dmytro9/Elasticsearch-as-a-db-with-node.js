@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<h1>Elastic</h1>
+	<button>Click</button>
+
+<script type="text/javascript">
+			var btn = document.getElementsByTagName('button')[0];
+			var h1 = document.getElementsByTagName('h1')[0];
+
+			btn.onclick = function() {
+			fetch('http://localhost:3000/some')
+			.then(res => res.json())
+			.then(data => {
+				console.log(data[0])
+				// console.log(data[0]._index)
+			})
+	}
+</script>
+</body>
+</html>
