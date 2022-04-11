@@ -1,0 +1,64 @@
+# Elasticsearch
+
+For: analizing data (predicting future # of calls), performing search (range, colors, price ...).
+Data saved as documents.
+Document's data is separated into fields (as columns in relational db).
+
+
+## Elasticstack (tools for working with Elasticsearch)
+- Kibana: analitics and visualization platform.
+- Logstash: An event processing pipeline. Proccess logs of apps and send them to Elasticsearch.
+- X-Pack: adds additional features to the Elasticsearch and Kibana.
+- Graph: popular is not the same as relevant.
+- Elasticsearch SQL: Query Elasticsearch with SQL.
+- Beats: a collection of data shippers that send data to Elasticsearch or Logstash.
+
+Install:
+Elasticstack - https://www.elastic.co/downloads/elasticsearch
+Kibana - https://www.elastic.co/downloads/kibana
+
+
+start Elasticstack: 7-zip unarchive Elasticstack -> cd Elasticstack ->  bin/elasticsearch.bat
+start Kibana: 7-zip unarchive Kibana -> cd Kibana ->  bin/kibana.bat
+
+OR running in the Cloud (trial period)
+https://info.elastic.co/elasticsearch-service-trial-course.html?blade=udemy&hulk=partner&gambit=guide-to-es
+
+
+## Making Requests to Elasticstack (Cloud or Local instance)
+get url (ex.: from Cloud - https://elastic-test-1.es.us-central1.gcp.cloud.es.io:9243 )
+add Basic auth
+
+
+### Sharding
+deviding indices into smaller pieces (if we don't have enough space)
+Sharding increases the number of documents an index can store  
+
+Primary shard - A shard that has been replicated.
+
+### Replication
+if hard drive is corrupted
+Replication works by creating copies of shards, referred to as replica shards
+Replica should be stored on another Node
+increases availability
+
+### SnapShots
+Rollback data (can be on daily basis)
+
+
+# REST:
+see Postman -> Elasticsearch
+
+
+### Create an Index:
+PUT {{ELASTIC_HOST}}/products
+- if you want to change default number of replicas or shards add the JSON object in the body
+{
+  "settings": {
+      "number_of_shards": 2,
+      "number_of_replicas": 2
+  }
+}
+
+### Delete an Index
+DELETE {{ELASTIC_HOST}}/products
